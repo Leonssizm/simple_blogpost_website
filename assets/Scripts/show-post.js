@@ -2,7 +2,6 @@ let params = new URLSearchParams(document.location.search);
 let postId = params.get("postId");
 
 if (postId == "101") {
-  // get from local storage
   document.getElementById("post-title").innerHTML =
     localStorage.getItem("title");
   document.getElementById("post-body").innerHTML = localStorage.getItem("body");
