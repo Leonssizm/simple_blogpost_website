@@ -11,32 +11,19 @@
 </head>
 
 <body>
-    <h1 class="d-flex justify-content-center p-5"> Add Post </h1>
-
+    <h1 class="p-5 d-flex justify-content-center"> Add Post </h1>
     <div class="d-flex flex-column align-items-center ">
         <div class="form-group w-25 ">
-            <input type="text" id="title" class="form-control" placeholder='Title'>
-
+            <input type="text" id="title" class="form-control mb-3" placeholder='Title'>
+            <textarea id="body" class="form-control mt-3" placeholder="body"></textarea>
         </div>
-        <div class="w-25">
-            <textarea id="body" class="form-control" placeholder="body"></textarea>
-
-        </div>
-        </form>
     </div>
 
-    <div class="button-wrapper d-flex justify-content-center p-5">
+    <div class="d-flex justify-content-center p-5 ">
         <button onclick="addPost()" class="btn btn-primary mr-5"> Create </button>
         <a href="./posts-page.html" class="btn btn-danger "> Cancel </a>
     </div>
-
-
-
-
-    <script src="./assets/Scripts/add-post.js">
-
-    </script>
-
+    <script src="./assets/Scripts/add-post.js"></script>
 </body>
 
 </html>

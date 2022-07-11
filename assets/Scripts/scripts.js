@@ -1,4 +1,4 @@
-//Getting Posts for the posts-page
+//Fetching posts for the posts page
 fetch("https://jsonplaceholder.typicode.com/posts")
   .then((res) => res.json())
   .then((data) => {
@@ -10,13 +10,13 @@ fetch("https://jsonplaceholder.typicode.com/posts")
         <p>${post.body}</p>
 
         <div class="btn-wrapper d-flex justify-content-between mt-5 ">
-            <a href="./show-post.html?postId=${post.id}" id="show-btn-N${post.id}" class="btn btn-primary">Show</a>
-            <button onclick="removePost(${post.id})"  id='delete-btn-N${post.id}' class="btn btn-danger">Delete</button>
+            <a href="./show-post.html?postId=${post.id}"  class="btn btn-primary">View</a>
+            <button onclick="removePost(${post.id})" class="btn btn-danger">Delete</button>
         </div>
         </div>
       `;
     });
-
+    //Adding post
     if (localStorage.getItem("id") !== null) {
       output += `<div id="${localStorage.getItem(
         "id"
@@ -29,21 +29,16 @@ fetch("https://jsonplaceholder.typicode.com/posts")
     <div class="btn-wrapper d-flex justify-content-between mt-5">
     <a href="./show-post.html?postId=${localStorage.getItem(
       "id"
-    )}" id="show-btn-N${localStorage.getItem(
-        "id"
-      )}" class="btn btn-primary">Show</a>
+    )}" class="btn btn-primary">View</a>
     <button onclick="removePost(${localStorage.getItem(
       "id"
-    )})"  id='delete-btn-N${localStorage.getItem(
-        "id"
-      )}' class="btn btn-danger">Delete</button>
+    )})" class="btn btn-danger">Delete</button>
 </div>
     </div>
     `;
     }
     document.getElementById("card-body").innerHTML = output;
   });
-//deleting posts
 function removePost(id) {
   document.getElementById(id).remove();
 }

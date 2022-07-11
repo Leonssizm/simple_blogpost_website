@@ -4,7 +4,6 @@ function addPost() {
     body: JSON.stringify({
       title: document.getElementById("title").value,
       body: document.getElementById("body").value,
-      userId: 1,
       id: 101,
     }),
     headers: {
@@ -16,8 +15,6 @@ function addPost() {
       localStorage.setItem("title", data.title);
       localStorage.setItem("body", data.body);
       localStorage.setItem("id", data.id);
-
-      // redirect to another page
       window.location.href = "/posts-page.html";
     });
 }
