@@ -13,22 +13,26 @@ fetch("https://jsonplaceholder.typicode.com/posts")
         localStorage.getItem("body")
       );
     }
-    document.getElementById("card-body").innerHTML = output;
+    document.getElementById("card-template").innerHTML = output;
   });
 
 function removePost(id) {
   document.getElementById(id).remove();
 }
-function createPostElement(id, title, body) {
-  return `
-        <div id="${id}" class="card card-body mb-3">
-        <h3>ID: N${id} ${title}</h3>
-        <p>${body}</p>
 
-        <div class="btn-wrapper d-flex justify-content-between mt-5 ">
-            <a href="./post.html?postId=${id}"class="btn btn-primary">View</a>
-            <button onclick="removePost(${id})" class="btn btn-danger">Delete</button>
-        </div>
-        </div>
-      `;
+function createPostElement(id, title, body) {
+  let template = document.getElementById("card-template");
+  let clonedCard = template.content.cloneNode(true);
+  let cardsContainer = document.getElementById("card-container");
+
+  clonedCard.getElementById("CARD_ID").id = id;
+  clonedCard.querySelector("span").innerHTML = "ID: " + id;
+  clonedCard.querySelector("h3").innerHTML = title;
+  clonedCard.querySelector("p").innerHTML = body;
+  clonedCard.querySelector("a").href = "./post.html?postId=" + id;
+  clonedCard.querySelector("button").onclick = () => {
+    removePost(id);
+  };
+
+  cardsContainer.appendChild(clonedCard);
 }
