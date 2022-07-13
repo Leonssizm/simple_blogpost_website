@@ -8,8 +8,8 @@ if (postId == "101") {
 } else {
   fetch("https://jsonplaceholder.typicode.com/posts/" + postId)
     .then((response) => response.json())
-    .then((data) => {
-      document.getElementById("post-title").innerHTML = data.title;
-      document.getElementById("post-body").innerHTML = data.body;
+    .then((posts) => {
+      document.getElementById("post-title").innerHTML = posts.title;
+      document.getElementById("post-body").innerHTML = posts.body;
     });
 }

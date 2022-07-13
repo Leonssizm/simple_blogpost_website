@@ -11,10 +11,10 @@ function addPost() {
     },
   })
     .then((response) => response.json())
-    .then((data) => {
-      localStorage.setItem("title", data.title);
-      localStorage.setItem("body", data.body);
-      localStorage.setItem("id", data.id);
-      window.location.href = "/posts-page.html";
+    .then((posts) => {
+      localStorage.setItem("title", posts.title);
+      localStorage.setItem("body", posts.body);
+      localStorage.setItem("id", posts.id);
+      window.location.href = "./posts.html";
     });
 }

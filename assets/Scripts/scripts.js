@@ -1,13 +1,13 @@
 fetch("https://jsonplaceholder.typicode.com/posts")
   .then((res) => res.json())
-  .then((data) => {
+  .then((posts) => {
     let output = "";
-    data.forEach((post) => {
-      output += creatingPostElements(post.id, post.title, post.body);
+    posts.forEach((post) => {
+      output += createPostElement(post.id, post.title, post.body);
     });
 
     if (localStorage.getItem("id") !== null) {
-      output += creatingPostElements(
+      output += createPostElement(
         localStorage.getItem("id"),
         localStorage.getItem("title"),
         localStorage.getItem("body")
@@ -19,15 +19,14 @@ fetch("https://jsonplaceholder.typicode.com/posts")
 function removePost(id) {
   document.getElementById(id).remove();
 }
-
-function creatingPostElements(id, title, body) {
+function createPostElement(id, title, body) {
   return `
         <div id="${id}" class="card card-body mb-3">
         <h3>ID: N${id} ${title}</h3>
         <p>${body}</p>
 
         <div class="btn-wrapper d-flex justify-content-between mt-5 ">
-            <a href="./show-post.html?postId=${id}"class="btn btn-primary">View</a>
+            <a href="./post.html?postId=${id}"class="btn btn-primary">View</a>
             <button onclick="removePost(${id})" class="btn btn-danger">Delete</button>
         </div>
         </div>
